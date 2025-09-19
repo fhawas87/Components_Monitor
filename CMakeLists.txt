@@ -9,7 +9,7 @@ find_package(GLEW REQUIRED)
 set (SRC
   
   src/main.cpp
-  src/RenderWindow/MainRender/render.cpp
+  src/app_render/render.cpp
 )
 
 #set(EXTERNAL ${CMAKE_CURRENT_SOURCE_DIR}/external)
@@ -34,8 +34,7 @@ add_executable(${PROJECT_NAME} ${SRC})
 target_include_directories(imgui PUBLIC ${IMGUI_DIR} ${IMGUI_DIR}/backends)
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/RenderWindow
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/RenderWindow/MainRender
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/app_render
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
   imgui

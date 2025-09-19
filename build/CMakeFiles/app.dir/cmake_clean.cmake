@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o"
-  "CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o.d"
+  "CMakeFiles/app.dir/src/app_render/render.cpp.o"
+  "CMakeFiles/app.dir/src/app_render/render.cpp.o.d"
   "CMakeFiles/app.dir/src/main.cpp.o"
   "CMakeFiles/app.dir/src/main.cpp.o.d"
   "app"

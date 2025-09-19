@@ -12,6 +12,8 @@
 #include "theme.h"
 
 
+// INFO : very useful function in case of any glfw init errors
+
 static void glfw_error_callback(int error, const char* error_description) { fprintf(stderr, "%d : %s\n", error, error_description);}
 //static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -82,12 +84,12 @@ void MainWindow::window_features() {
   io->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
   
   // FIX : cannot compile those two flags, compiler can't find those functions 
-  // INFO : had to add docking branch from imgui github and now it is working 
+  // INFO : forgot to add docking branch from imgui github and where those functions are located, now it is working 
 
   if (WindowMacros::DOCKING && io != nullptr) { io->ConfigFlags |= ImGuiConfigFlags_DockingEnable; }
   if (WindowMacros::VIEWPORT && io != nullptr) { io->ConfigFlags &= ~ImGuiConfigFlags_ViewportsEnable; }
 
-  // apply theme here
+  // INFO - apply theme here
 
   Theme theme;
   theme.ApplyTheme();
@@ -136,6 +138,10 @@ void MainWindow::main_loop() {
 }
 
 void MainWindow::clean_up() {
+  
+  ImGui_ImplOpenGL3_Shutdown();
+  ImGui_ImplGlfw_Shutdown();
+  ImGui::DestroyContext();
 
   glfwDestroyWindow(main_window);
   glfwTerminate();

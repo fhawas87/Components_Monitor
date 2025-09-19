@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLEW
 
-CXX_INCLUDES = -I/home/kuba/opengl-smth/src -I/home/kuba/opengl-smth/src/RenderWindow -I/home/kuba/opengl-smth/src/RenderWindow/MainRender -I/home/kuba/opengl-smth/external/imgui -I/home/kuba/opengl-smth/external/imgui/backends
+CXX_INCLUDES = -I/home/kuba/opengl-smth/src -I/home/kuba/opengl-smth/src/app_render -I/home/kuba/opengl-smth/external/imgui -I/home/kuba/opengl-smth/external/imgui/backends
 
 CXX_FLAGS = 
 

@@ -83,30 +83,30 @@ CMakeFiles/app.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kuba/opengl-smth/src/main.cpp -o CMakeFiles/app.dir/src/main.cpp.s
 
-CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o: /home/kuba/opengl-smth/src/RenderWindow/MainRender/render.cpp
-CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o -MF CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o.d -o CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o -c /home/kuba/opengl-smth/src/RenderWindow/MainRender/render.cpp
+CMakeFiles/app.dir/src/app_render/render.cpp.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/app_render/render.cpp.o: /home/kuba/opengl-smth/src/app_render/render.cpp
+CMakeFiles/app.dir/src/app_render/render.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/app.dir/src/app_render/render.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/app_render/render.cpp.o -MF CMakeFiles/app.dir/src/app_render/render.cpp.o.d -o CMakeFiles/app.dir/src/app_render/render.cpp.o -c /home/kuba/opengl-smth/src/app_render/render.cpp
 
-CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kuba/opengl-smth/src/RenderWindow/MainRender/render.cpp > CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.i
+CMakeFiles/app.dir/src/app_render/render.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/app_render/render.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kuba/opengl-smth/src/app_render/render.cpp > CMakeFiles/app.dir/src/app_render/render.cpp.i
 
-CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kuba/opengl-smth/src/RenderWindow/MainRender/render.cpp -o CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.s
+CMakeFiles/app.dir/src/app_render/render.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/app_render/render.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kuba/opengl-smth/src/app_render/render.cpp -o CMakeFiles/app.dir/src/app_render/render.cpp.s
 
 # Object files for target app
 app_OBJECTS = \
 "CMakeFiles/app.dir/src/main.cpp.o" \
-"CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o"
+"CMakeFiles/app.dir/src/app_render/render.cpp.o"
 
 # External object files for target app
 app_EXTERNAL_OBJECTS =
 
 app: CMakeFiles/app.dir/src/main.cpp.o
-app: CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o
+app: CMakeFiles/app.dir/src/app_render/render.cpp.o
 app: CMakeFiles/app.dir/build.make
 app: libimgui.a
 app: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3

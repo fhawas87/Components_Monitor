@@ -286,29 +286,29 @@ external/imgui/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/external/imgui/imgui_widgets.cpp.s
 .PHONY : external/imgui/imgui_widgets.cpp.s
 
-src/RenderWindow/MainRender/render.o: src/RenderWindow/MainRender/render.cpp.o
-.PHONY : src/RenderWindow/MainRender/render.o
+src/app_render/render.o: src/app_render/render.cpp.o
+.PHONY : src/app_render/render.o
 
 # target to build an object file
-src/RenderWindow/MainRender/render.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.o
-.PHONY : src/RenderWindow/MainRender/render.cpp.o
+src/app_render/render.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/render.cpp.o
+.PHONY : src/app_render/render.cpp.o
 
-src/RenderWindow/MainRender/render.i: src/RenderWindow/MainRender/render.cpp.i
-.PHONY : src/RenderWindow/MainRender/render.i
+src/app_render/render.i: src/app_render/render.cpp.i
+.PHONY : src/app_render/render.i
 
 # target to preprocess a source file
-src/RenderWindow/MainRender/render.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.i
-.PHONY : src/RenderWindow/MainRender/render.cpp.i
+src/app_render/render.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/render.cpp.i
+.PHONY : src/app_render/render.cpp.i
 
-src/RenderWindow/MainRender/render.s: src/RenderWindow/MainRender/render.cpp.s
-.PHONY : src/RenderWindow/MainRender/render.s
+src/app_render/render.s: src/app_render/render.cpp.s
+.PHONY : src/app_render/render.s
 
 # target to generate assembly for a file
-src/RenderWindow/MainRender/render.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/RenderWindow/MainRender/render.cpp.s
-.PHONY : src/RenderWindow/MainRender/render.cpp.s
+src/app_render/render.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/render.cpp.s
+.PHONY : src/app_render/render.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -362,9 +362,9 @@ help:
 	@echo "... external/imgui/imgui_widgets.o"
 	@echo "... external/imgui/imgui_widgets.i"
 	@echo "... external/imgui/imgui_widgets.s"
-	@echo "... src/RenderWindow/MainRender/render.o"
-	@echo "... src/RenderWindow/MainRender/render.i"
-	@echo "... src/RenderWindow/MainRender/render.s"
+	@echo "... src/app_render/render.o"
+	@echo "... src/app_render/render.i"
+	@echo "... src/app_render/render.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

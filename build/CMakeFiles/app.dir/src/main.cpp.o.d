@@ -1,6 +1,6 @@
 CMakeFiles/app.dir/src/main.cpp.o: /home/kuba/opengl-smth/src/main.cpp \
  /usr/include/stdc-predef.h \
- /home/kuba/opengl-smth/src/RenderWindow/MainRender/render.h \
+ /home/kuba/opengl-smth/src/app_render/render.h \
  /usr/include/c++/13/cstdint \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
