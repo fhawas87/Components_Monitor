@@ -8,7 +8,7 @@
 int main(void) {
   
   // RUN APP
-  
+   
   nvmlReturn_t initialize_result;
   initialize_result = nvmlInit_v2();
   if (initialize_result != NVML_SUCCESS) {
