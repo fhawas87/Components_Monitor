@@ -234,6 +234,18 @@ GLEW_STATIC_LIBRARY_DEBUG:FILEPATH=GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
 GLEW_STATIC_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libGLEW.a
 
 //Path to a file.
+LIBSENSORS_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+LIBSENSORS_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libsensors.so
+
+//Path to a file.
+NVML_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+NVML_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libnvidia-ml.so
+
+//Path to a file.
 OPENGL_EGL_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a file.

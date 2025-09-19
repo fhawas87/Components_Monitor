@@ -8,6 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_c.c" "CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o" "gcc" "CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o.d"
+  "/home/kuba/opengl-smth/src/app_render/components_dashboard/ram/ram.c" "CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o" "gcc" "CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o.d"
+  "/home/kuba/opengl-smth/src/app_render/components_dashboard/cpu/cpu.cpp" "CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o" "gcc" "CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o.d"
+  "/home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_cpp.cpp" "CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o" "gcc" "CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o.d"
   "/home/kuba/opengl-smth/src/app_render/render.cpp" "CMakeFiles/app.dir/src/app_render/render.cpp.o" "gcc" "CMakeFiles/app.dir/src/app_render/render.cpp.o.d"
   "/home/kuba/opengl-smth/src/main.cpp" "CMakeFiles/app.dir/src/main.cpp.o" "gcc" "CMakeFiles/app.dir/src/main.cpp.o.d"
   )

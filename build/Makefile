@@ -286,6 +286,102 @@ external/imgui/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/external/imgui/imgui_widgets.cpp.s
 .PHONY : external/imgui/imgui_widgets.cpp.s
 
+src/app_render/components_dashboard/cpu/cpu.o: src/app_render/components_dashboard/cpu/cpu.cpp.o
+.PHONY : src/app_render/components_dashboard/cpu/cpu.o
+
+# target to build an object file
+src/app_render/components_dashboard/cpu/cpu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o
+.PHONY : src/app_render/components_dashboard/cpu/cpu.cpp.o
+
+src/app_render/components_dashboard/cpu/cpu.i: src/app_render/components_dashboard/cpu/cpu.cpp.i
+.PHONY : src/app_render/components_dashboard/cpu/cpu.i
+
+# target to preprocess a source file
+src/app_render/components_dashboard/cpu/cpu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.i
+.PHONY : src/app_render/components_dashboard/cpu/cpu.cpp.i
+
+src/app_render/components_dashboard/cpu/cpu.s: src/app_render/components_dashboard/cpu/cpu.cpp.s
+.PHONY : src/app_render/components_dashboard/cpu/cpu.s
+
+# target to generate assembly for a file
+src/app_render/components_dashboard/cpu/cpu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.s
+.PHONY : src/app_render/components_dashboard/cpu/cpu.cpp.s
+
+src/app_render/components_dashboard/gpu/gpu_c.o: src/app_render/components_dashboard/gpu/gpu_c.c.o
+.PHONY : src/app_render/components_dashboard/gpu/gpu_c.o
+
+# target to build an object file
+src/app_render/components_dashboard/gpu/gpu_c.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o
+.PHONY : src/app_render/components_dashboard/gpu/gpu_c.c.o
+
+src/app_render/components_dashboard/gpu/gpu_c.i: src/app_render/components_dashboard/gpu/gpu_c.c.i
+.PHONY : src/app_render/components_dashboard/gpu/gpu_c.i
+
+# target to preprocess a source file
+src/app_render/components_dashboard/gpu/gpu_c.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.i
+.PHONY : src/app_render/components_dashboard/gpu/gpu_c.c.i
+
+src/app_render/components_dashboard/gpu/gpu_c.s: src/app_render/components_dashboard/gpu/gpu_c.c.s
+.PHONY : src/app_render/components_dashboard/gpu/gpu_c.s
+
+# target to generate assembly for a file
+src/app_render/components_dashboard/gpu/gpu_c.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.s
+.PHONY : src/app_render/components_dashboard/gpu/gpu_c.c.s
+
+src/app_render/components_dashboard/gpu/gpu_cpp.o: src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o
+.PHONY : src/app_render/components_dashboard/gpu/gpu_cpp.o
+
+# target to build an object file
+src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o
+.PHONY : src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o
+
+src/app_render/components_dashboard/gpu/gpu_cpp.i: src/app_render/components_dashboard/gpu/gpu_cpp.cpp.i
+.PHONY : src/app_render/components_dashboard/gpu/gpu_cpp.i
+
+# target to preprocess a source file
+src/app_render/components_dashboard/gpu/gpu_cpp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.i
+.PHONY : src/app_render/components_dashboard/gpu/gpu_cpp.cpp.i
+
+src/app_render/components_dashboard/gpu/gpu_cpp.s: src/app_render/components_dashboard/gpu/gpu_cpp.cpp.s
+.PHONY : src/app_render/components_dashboard/gpu/gpu_cpp.s
+
+# target to generate assembly for a file
+src/app_render/components_dashboard/gpu/gpu_cpp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.s
+.PHONY : src/app_render/components_dashboard/gpu/gpu_cpp.cpp.s
+
+src/app_render/components_dashboard/ram/ram.o: src/app_render/components_dashboard/ram/ram.c.o
+.PHONY : src/app_render/components_dashboard/ram/ram.o
+
+# target to build an object file
+src/app_render/components_dashboard/ram/ram.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o
+.PHONY : src/app_render/components_dashboard/ram/ram.c.o
+
+src/app_render/components_dashboard/ram/ram.i: src/app_render/components_dashboard/ram/ram.c.i
+.PHONY : src/app_render/components_dashboard/ram/ram.i
+
+# target to preprocess a source file
+src/app_render/components_dashboard/ram/ram.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.i
+.PHONY : src/app_render/components_dashboard/ram/ram.c.i
+
+src/app_render/components_dashboard/ram/ram.s: src/app_render/components_dashboard/ram/ram.c.s
+.PHONY : src/app_render/components_dashboard/ram/ram.s
+
+# target to generate assembly for a file
+src/app_render/components_dashboard/ram/ram.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.s
+.PHONY : src/app_render/components_dashboard/ram/ram.c.s
+
 src/app_render/render.o: src/app_render/render.cpp.o
 .PHONY : src/app_render/render.o
 
@@ -362,6 +458,18 @@ help:
 	@echo "... external/imgui/imgui_widgets.o"
 	@echo "... external/imgui/imgui_widgets.i"
 	@echo "... external/imgui/imgui_widgets.s"
+	@echo "... src/app_render/components_dashboard/cpu/cpu.o"
+	@echo "... src/app_render/components_dashboard/cpu/cpu.i"
+	@echo "... src/app_render/components_dashboard/cpu/cpu.s"
+	@echo "... src/app_render/components_dashboard/gpu/gpu_c.o"
+	@echo "... src/app_render/components_dashboard/gpu/gpu_c.i"
+	@echo "... src/app_render/components_dashboard/gpu/gpu_c.s"
+	@echo "... src/app_render/components_dashboard/gpu/gpu_cpp.o"
+	@echo "... src/app_render/components_dashboard/gpu/gpu_cpp.i"
+	@echo "... src/app_render/components_dashboard/gpu/gpu_cpp.s"
+	@echo "... src/app_render/components_dashboard/ram/ram.o"
+	@echo "... src/app_render/components_dashboard/ram/ram.i"
+	@echo "... src/app_render/components_dashboard/ram/ram.s"
 	@echo "... src/app_render/render.o"
 	@echo "... src/app_render/render.i"
 	@echo "... src/app_render/render.s"

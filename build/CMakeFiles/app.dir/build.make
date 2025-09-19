@@ -97,23 +97,89 @@ CMakeFiles/app.dir/src/app_render/render.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/app_render/render.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kuba/opengl-smth/src/app_render/render.cpp -o CMakeFiles/app.dir/src/app_render/render.cpp.s
 
+CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o: /home/kuba/opengl-smth/src/app_render/components_dashboard/cpu/cpu.cpp
+CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o -MF CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o.d -o CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o -c /home/kuba/opengl-smth/src/app_render/components_dashboard/cpu/cpu.cpp
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kuba/opengl-smth/src/app_render/components_dashboard/cpu/cpu.cpp > CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.i
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kuba/opengl-smth/src/app_render/components_dashboard/cpu/cpu.cpp -o CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.s
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o: /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_c.c
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o: CMakeFiles/app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o -MF CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o.d -o CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o -c /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_c.c
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_c.c > CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.i
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_c.c -o CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.s
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o: /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_cpp.cpp
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o -MF CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o.d -o CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o -c /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_cpp.cpp
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_cpp.cpp > CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.i
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kuba/opengl-smth/src/app_render/components_dashboard/gpu/gpu_cpp.cpp -o CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.s
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o: /home/kuba/opengl-smth/src/app_render/components_dashboard/ram/ram.c
+CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o: CMakeFiles/app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o -MF CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o.d -o CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o -c /home/kuba/opengl-smth/src/app_render/components_dashboard/ram/ram.c
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kuba/opengl-smth/src/app_render/components_dashboard/ram/ram.c > CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.i
+
+CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kuba/opengl-smth/src/app_render/components_dashboard/ram/ram.c -o CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.s
+
 # Object files for target app
 app_OBJECTS = \
 "CMakeFiles/app.dir/src/main.cpp.o" \
-"CMakeFiles/app.dir/src/app_render/render.cpp.o"
+"CMakeFiles/app.dir/src/app_render/render.cpp.o" \
+"CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o" \
+"CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o" \
+"CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o" \
+"CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o"
 
 # External object files for target app
 app_EXTERNAL_OBJECTS =
 
 app: CMakeFiles/app.dir/src/main.cpp.o
 app: CMakeFiles/app.dir/src/app_render/render.cpp.o
+app: CMakeFiles/app.dir/src/app_render/components_dashboard/cpu/cpu.cpp.o
+app: CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_c.c.o
+app: CMakeFiles/app.dir/src/app_render/components_dashboard/gpu/gpu_cpp.cpp.o
+app: CMakeFiles/app.dir/src/app_render/components_dashboard/ram/ram.c.o
 app: CMakeFiles/app.dir/build.make
 app: libimgui.a
 app: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 app: /usr/lib/x86_64-linux-gnu/libGLEW.so
 app: /usr/lib/x86_64-linux-gnu/libGL.so
+app: /usr/lib/x86_64-linux-gnu/libnvidia-ml.so
+app: /usr/lib/x86_64-linux-gnu/libsensors.so
 app: CMakeFiles/app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kuba/opengl-smth/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
