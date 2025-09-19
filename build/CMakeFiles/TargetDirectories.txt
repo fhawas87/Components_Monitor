@@ -1,4 +1,0 @@
-/home/kuba/opengl-smth/build/CMakeFiles/imgui.dir
-/home/kuba/opengl-smth/build/CMakeFiles/app.dir
-/home/kuba/opengl-smth/build/CMakeFiles/edit_cache.dir
-/home/kuba/opengl-smth/build/CMakeFiles/rebuild_cache.dir
