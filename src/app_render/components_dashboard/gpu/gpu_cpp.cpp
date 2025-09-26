@@ -57,7 +57,7 @@ std::vector<unsigned int> get_gpu_VRAM_info() {
 
   unsigned int total_VRAM_installed_MiB = (memory.total / 1024 / 1024);
   unsigned int total_VRAM_used_MiB = (memory.used / 1024 / 1024);
-  unsigned int total_VRAM_free_MiB = (memory.free / 1204 / 1024);
+  unsigned int total_VRAM_free_MiB = (memory.free / 1024 / 1024);
 
   memory_info.emplace_back(total_VRAM_installed_MiB);
   memory_info.emplace_back(total_VRAM_used_MiB);
