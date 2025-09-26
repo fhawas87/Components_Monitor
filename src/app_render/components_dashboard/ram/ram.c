@@ -12,6 +12,7 @@ unsigned int get_ram_memory_usage(void) {
   }
   
   char memory_proc_info_buffer[512];
+
   unsigned long long total_ram_memory_KiB = 0;
   unsigned long long available_ram_memory_KiB = 0;
   
