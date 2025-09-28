@@ -152,7 +152,7 @@ float get_cpu_utilization() {
 
   cpu_proc_stats first_sample = fill_struct_of_cpu_stats();
 
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
   cpu_proc_stats second_sample = fill_struct_of_cpu_stats();
 

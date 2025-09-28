@@ -11,6 +11,8 @@
 #include "render.h"
 #include "theme.h"
 
+#include "components_dashboard/sample.h"
+
 
 // INFO : very useful function in case of any glfw init errors
 
@@ -99,9 +101,12 @@ void MainWindow::window_features() {
 }
 
 void MainWindow::main_loop() {
-
+  
+  double last_time = glfwGetTime();
+  static sampler cs; // current system snaphot varaible
+  //
   while (!glfwWindowShouldClose(main_window)) {
-    
+
     glfwSetErrorCallback(glfw_error_callback);
     glfwPollEvents();
 
@@ -110,7 +115,8 @@ void MainWindow::main_loop() {
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
-
+    
+    /*
     if (WindowMacros::ShowWindow_1) {
 
       ImGui::Begin("Window 1");
@@ -125,7 +131,40 @@ void MainWindow::main_loop() {
       ImGui::Text("fps %1.f", io->Framerate);
       ImGui::End();
     }
-
+    */ 
+    
+    double current_time = glfwGetTime();
+    if (current_time - last_time >= 1.0) {
+      cs.refresh_samples();
+    }
+    
+    const stats& sample_c = cs.snaphot();
+    size_t number_of_cores = sample_c.cpu.cpu_temps.size();
+    
+    ImGui::Begin("Components Dashboard");
+    ImGui::Separator();
+    ImGui::Text("%s   fps %1.f", sample_c.cpu.cpu_model.c_str(), io->Framerate);
+    ImGui::Separator();
+    
+    for (int i = 0; i < number_of_cores; i++) {
+      
+      ImGui::Text("CPU Core #%d : %.1f C   %.0f MHz", i, sample_c.cpu.cpu_temps[i], sample_c.cpu.cpu_freqs[i]);
+    }
+    //ImGui::Text("CPU Usage : %.1f%%", sample_c.cpu.cpu_usage);
+    ImGui::Separator();
+    ImGui::Text("%s", sample_c.gpu.gpu_model.c_str());
+    ImGui::Separator();
+    ImGui::Text("GPU Usage : %u%%", sample_c.gpu.gpu_usage);
+    ImGui::Text("GPU Core Temp : %u C", sample_c.gpu.gpu_temp);
+    ImGui::Text("GPU Core Freq : %u MHz", sample_c.gpu.gpu_freq);
+    //ImGui::Text("GPU VRAM : %u / %u MiB, Usage : %u%%", sample_c.gpu.gpu_vram[1], sample_c.gpu.gpu_vram[0], sample_c.gpu.gpu_vram[3]);
+    if (sample_c.gpu.gpu_vram.size() > 3) {
+      ImGui::Text("GPU VRAM : %u MiB / %u MiB", sample_c.gpu.gpu_vram[1], sample_c.gpu.gpu_vram[0]);
+    }
+    ImGui::Separator();
+    //ImGui::Text("RAM Usage : %u%%", sample_c.ram.ram_usage);
+    ImGui::Separator();
+    ImGui::End();
     ImGui::Render();
 
     glClearColor(0.16f, 0.16f, 0.16f, 1.0f);

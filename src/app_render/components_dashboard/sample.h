@@ -62,7 +62,10 @@ public :
     sample.cpu.cpu_model = get_cpu_model();
     sample.cpu.cpu_temps = get_cpu_core_thermal_values();
     sample.cpu.cpu_freqs = get_cpu_core_frequencies(sample.cpu.cpu_temps.size());
-    sample.cpu.cpu_usage = get_cpu_utilization();
+    //sample.cpu.cpu_usage = get_cpu_utilization();
+
+    //sample.cpu.cpu_temps.resize(sample.cpu.cpu_temps.size());
+    //sample.cpu.cpu_freqs.resize(sample.cpu.cpu_temps.size());
 
     sample.gpu.gpu_model = get_accessible_device_name();
     sample.gpu.gpu_temp  = get_current_gpu_temperature();
@@ -70,7 +73,7 @@ public :
     sample.gpu.gpu_vram  = get_gpu_VRAM_info();
     sample.gpu.gpu_usage = get_core_utilization_percentage_rate();
 
-    sample.ram.ram.usage = get_ram_memory_usage();
+    //sample.ram.ram_usage = get_ram_memory_usage();
   }
 
 private:
