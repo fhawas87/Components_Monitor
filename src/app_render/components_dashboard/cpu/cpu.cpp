@@ -119,7 +119,7 @@ cpu_proc_stats fill_struct_of_cpu_stats() {
   FILE *cpu_stats_file_info = fopen("/proc/stat", "r");
   if (!cpu_stats_file_info) {
     printf("Something wrong with the /proc/stat path\n");
-    fclose(cpu_stats_file_info);
+    //fclose(cpu_stats_file_info);
 
     return {};
   }
@@ -127,7 +127,7 @@ cpu_proc_stats fill_struct_of_cpu_stats() {
   cpu_proc_stats proc_info_stat_read;
   char stats_buffer[512];
   fgets(stats_buffer, sizeof(stats_buffer), cpu_stats_file_info);
-  fclose(cpu_stats_file_info);
+  //fclose(cpu_stats_file_info);
 
   int stats_read = sscanf(stats_buffer,
                     "%*s %llu %llu %llu %llu %llu %llu %llu %llu %llu %llu",
@@ -141,6 +141,8 @@ cpu_proc_stats fill_struct_of_cpu_stats() {
                     &proc_info_stat_read.steal,
                     &proc_info_stat_read.guest,
                     &proc_info_stat_read.guest_nice);
+
+  fclose(cpu_stats_file_info);
 
   return proc_info_stat_read;
 }
