@@ -20,14 +20,6 @@ struct WindowMacros {
 
 }; 
   
-struct ViewportMacros {
-  
-  int x_cor = 0;
-  int y_cor = 0;
-  uint16_t VP_WIDTH = 1600;
-  uint16_t VP_HEIGHT = 900;
-};
-
 class MainWindow {
 
 public:

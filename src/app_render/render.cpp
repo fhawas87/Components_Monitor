@@ -102,7 +102,9 @@ void MainWindow::window_features() {
 void MainWindow::main_loop() {
   
   double last_time = glfwGetTime();
-  static sampler cs; // current system snaphot varaible
+  //static sampler cs; // current system snaphot varaible
+
+  stats current_stats{};
 
   while (!glfwWindowShouldClose(main_window)) {
 
@@ -110,7 +112,7 @@ void MainWindow::main_loop() {
     glfwPollEvents();
 
     // INFO - render here
-    
+    /*
     double current_time = glfwGetTime();
     if (current_time - last_time >= 1.0) {
       cs.refresh_samples();
@@ -118,11 +120,20 @@ void MainWindow::main_loop() {
     }
     
     const stats& sample_c = cs.snapshot();
+    */
+
+    double current_time = glfwGetTime();
+    if (current_time - last_time >= 1.0) {
+
+      current_stats = refresh_samples();
+      last_time = current_time;
+    }
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
-
+    
+    /*
     ImGui::Begin("Components Dashboard");
     ImGui::Separator();
     ImGui::Text("%s   fps %1.f", sample_c.cpu.cpu_model.c_str(), io->Framerate);
@@ -147,6 +158,11 @@ void MainWindow::main_loop() {
     ImGui::Text("RAM Usage : %u%%", sample_c.ram.ram_usage);
     ImGui::Separator();
     ImGui::End();
+    ImGui::Render();
+    */
+    
+    draw_system_dashboard(current_stats);
+
     ImGui::Render();
 
     glClearColor(0.16f, 0.16f, 0.16f, 1.0f);
