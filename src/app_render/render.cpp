@@ -10,7 +10,6 @@
 
 #include "render.h"
 #include "theme.h"
-
 #include "components_dashboard/sample.h"
 
 
@@ -119,9 +118,6 @@ void MainWindow::main_loop() {
     }
     
     const stats& sample_c = cs.snapshot();
-    //cs.number_of_cores = sample_c.cpu.cpu_temps.size();
-
-    //if (cs.number_of_cores == 0) { printf("NNNN\n"); }
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
@@ -132,15 +128,18 @@ void MainWindow::main_loop() {
     ImGui::Text("%s   fps %1.f", sample_c.cpu.cpu_model.c_str(), io->Framerate);
     ImGui::Separator();
     for (size_t i = 0; i < sample_c.cpu.cpu_temps.size(); i++) {
-      ImGui::Text("CPU Core #%zu : %.1f C   %.0f MHz", i, sample_c.cpu.cpu_temps[i], sample_c.cpu.cpu_freqs[i]);
+      ImGui::Text("CPU Core #%zu : %.1f C   %.1f MHz", i, sample_c.cpu.cpu_temps[i], sample_c.cpu.cpu_freqs[i]);
     }
     ImGui::Text("CPU Usage : %.1f%%", sample_c.cpu.cpu_usage);
+    //for (size_t i = 0; i < sample_c.cpu.cpu_temps.size(); i++) {
+    //  ImGui::Text("CPU Core #%zu : %.1f C", i, sample_c.cpu.cpu_temps[i]);
+    //}
     ImGui::Separator();
     ImGui::Text("%s", sample_c.gpu.gpu_model.c_str());
     ImGui::Separator();
     ImGui::Text("GPU Usage : %u%%", sample_c.gpu.gpu_usage);
-    ImGui::Text("GPU Core Temp : %u C", sample_c.gpu.gpu_temp);
-    ImGui::Text("GPU Core Freq : %u MHz", sample_c.gpu.gpu_freq);
+    ImGui::Text("GPU Temp : %u C", sample_c.gpu.gpu_temp);
+    ImGui::Text("GPU Freq : %u MHz", sample_c.gpu.gpu_freq);
     if (!sample_c.gpu.gpu_vram.empty()) {
       ImGui::Text("GPU VRAM : %u MiB / %u MiB", sample_c.gpu.gpu_vram[1], sample_c.gpu.gpu_vram[0]);
     }

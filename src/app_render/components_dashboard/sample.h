@@ -51,8 +51,6 @@ struct stats {
 
 class sampler {
 public :
-  
-  //size_t number_of_cores = 0;
 
   const stats &snapshot() const { return sample; }
 
@@ -61,7 +59,9 @@ public :
     sample.cpu.cpu_model = get_cpu_model();
     sample.cpu.cpu_temps = get_cpu_core_thermal_values();
     sample.cpu.cpu_usage = get_cpu_utilization();
-    sample.cpu.cpu_freqs = get_cpu_core_frequencies(sample.cpu.cpu_temps.size());
+    if (sample.cpu.cpu_temps.size() == 0) { printf("EMPTY\n"); }
+    //sample.cpu.cpu_freqs = get_cpu_core_frequencies(sample.cpu.cpu_temps.size());
+    sample.cpu.cpu_freqs = get_cpu_core_frequencies();
 
     sample.gpu.gpu_model = get_accessible_device_name();
     sample.gpu.gpu_temp  = get_current_gpu_temperature();
