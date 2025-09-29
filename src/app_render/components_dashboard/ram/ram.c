@@ -7,7 +7,7 @@ unsigned int get_ram_memory_usage(void) {
   FILE *mem_info = fopen("/proc/meminfo", "r");
   if (!mem_info) {
     printf("Something worng with given '/proc/meminfo' path\n");
-    //fclose(mem_info); // it is causing seg fault / UB after crossing file open limit and meminfo returns NULL
+    //fclose(mem_info); // it is causing seg fault / UB after crossing file open limit and meminfo returns NULL ig
     return 1;
   }
   

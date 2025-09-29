@@ -119,7 +119,9 @@ void MainWindow::main_loop() {
     }
     
     const stats& sample_c = cs.snapshot();
-    sample_c.number_of_cores = sample_c.cpu.cpu_temps.size();
+    //cs.number_of_cores = sample_c.cpu.cpu_temps.size();
+
+    //if (cs.number_of_cores == 0) { printf("NNNN\n"); }
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
@@ -129,8 +131,8 @@ void MainWindow::main_loop() {
     ImGui::Separator();
     ImGui::Text("%s   fps %1.f", sample_c.cpu.cpu_model.c_str(), io->Framerate);
     ImGui::Separator();
-    for (int i = 0; i < number_of_cores; i++) {
-      ImGui::Text("CPU Core #%d : %.1f C   %.0f MHz", i, sample_c.cpu.cpu_temps[i], sample_c.cpu.cpu_freqs[i]);
+    for (size_t i = 0; i < sample_c.cpu.cpu_temps.size(); i++) {
+      ImGui::Text("CPU Core #%zu : %.1f C   %.0f MHz", i, sample_c.cpu.cpu_temps[i], sample_c.cpu.cpu_freqs[i]);
     }
     ImGui::Text("CPU Usage : %.1f%%", sample_c.cpu.cpu_usage);
     ImGui::Separator();
