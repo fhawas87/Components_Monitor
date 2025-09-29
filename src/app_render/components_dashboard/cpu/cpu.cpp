@@ -74,11 +74,11 @@ std::vector<float> get_cpu_core_thermal_values() {
   return temps_vec;
 }
 
-//std::vector<float> get_cpu_core_frequencies(size_t number_of_cores) {
+/*
 std::vector<float> get_cpu_core_frequencies() {
  
   std::vector<float> freqs_vec;
-  char path_buffer[128];
+  char path_buffer[256];
   freqs_vec.resize(number_of_cores);
 
   for (size_t core = 0; core < number_of_cores; core++) {
@@ -101,6 +101,34 @@ std::vector<float> get_cpu_core_frequencies() {
     freqs_vec.emplace_back(current_freq_mHz);
   }
 
+  return freqs_vec;
+}
+*/
+
+std::vector<float> get_cpu_core_frequencies() {
+  std::vector<float> freqs_vec;
+
+  for (size_t core = 0; core < number_of_cores; core++) {
+
+    char path_buffer[256];
+    snprintf(path_buffer, sizeof(path_buffer), "/sys/devices/system/cpu/cpu%zu/cpufreq/scaling_cur_freq", core);
+
+    FILE* scaling_cur_freq_info = fopen(path_buffer, "r");
+    if (!scaling_cur_freq_info) {
+      printf("PATH PROBLEM\n");
+
+      freqs_vec.emplace_back(0);
+    }
+
+    unsigned int current_freq_kHz = 0;
+    if (scaling_cur_freq_info) {
+
+      fscanf(scaling_cur_freq_info, "%d", &current_freq_kHz);
+      fclose(scaling_cur_freq_info);
+    }
+
+    freqs_vec.emplace_back((float)(current_freq_kHz / 1000));
+  }
   return freqs_vec;
 }
 
@@ -158,7 +186,7 @@ float get_cpu_utilization() {
 
   cpu_proc_stats first_sample = fill_struct_of_cpu_stats();
 
-  std::this_thread::sleep_for(std::chrono::milliseconds(70));
+  std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
   cpu_proc_stats second_sample = fill_struct_of_cpu_stats();
 
