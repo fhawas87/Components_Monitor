@@ -31,7 +31,9 @@ private :
 
 
 std::string get_cpu_model();
+
 std::vector<float> get_cpu_core_thermal_values();
-std::vector<float> get_cpu_core_frequencies(size_t number_of_cores);
+std::vector<float> get_cpu_core_frequencies();
+//std::vector<float> get_cpu_core_frequencies(size_t number_of_cores);
 
 float get_cpu_utilization();

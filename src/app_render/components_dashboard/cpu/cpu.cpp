@@ -12,6 +12,8 @@
 
 #include "cpu.h"
 
+size_t number_of_cores = 0;
+
 std::string get_cpu_model() {
 
   char cpu_brand_name[49];
@@ -67,11 +69,13 @@ std::vector<float> get_cpu_core_thermal_values() {
 
     break;
   }
-
+  
+  number_of_cores = temps_vec.size();
   return temps_vec;
 }
 
-std::vector<float> get_cpu_core_frequencies(size_t number_of_cores) {
+//std::vector<float> get_cpu_core_frequencies(size_t number_of_cores) {
+std::vector<float> get_cpu_core_frequencies() {
  
   std::vector<float> freqs_vec;
   char path_buffer[128];
@@ -119,7 +123,7 @@ cpu_proc_stats fill_struct_of_cpu_stats() {
   FILE *cpu_stats_file_info = fopen("/proc/stat", "r");
   if (!cpu_stats_file_info) {
     printf("Something wrong with the /proc/stat path\n");
-    //fclose(cpu_stats_file_info);
+    fclose(cpu_stats_file_info);
 
     return {};
   }
