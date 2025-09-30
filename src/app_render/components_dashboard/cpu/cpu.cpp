@@ -74,37 +74,6 @@ std::vector<float> get_cpu_core_thermal_values() {
   return temps_vec;
 }
 
-/*
-std::vector<float> get_cpu_core_frequencies() {
- 
-  std::vector<float> freqs_vec;
-  char path_buffer[256];
-  freqs_vec.resize(number_of_cores);
-
-  for (size_t core = 0; core < number_of_cores; core++) {
-
-    int number_of_chars = snprintf(path_buffer, sizeof(path_buffer),
-    "/sys/devices/system/cpu/cpu%zu/cpufreq/scaling_cur_freq", core);
-
-    FILE* scaling_cur_freq_info = fopen(path_buffer, "r");
-    if (!scaling_cur_freq_info) {
-      printf("PATH PROBLEM\n");
-      printf("Core stop : %zu\n", core);
-      freqs_vec.emplace_back(0);
-      continue;
-    }
-
-    unsigned int current_freq_kHz = 0;
-    fscanf(scaling_cur_freq_info, "%d", &current_freq_kHz);
-
-    float current_freq_mHz = (float)(current_freq_kHz / 1000);
-    freqs_vec.emplace_back(current_freq_mHz);
-  }
-
-  return freqs_vec;
-}
-*/
-
 std::vector<float> get_cpu_core_frequencies() {
   std::vector<float> freqs_vec;
 
@@ -159,7 +128,6 @@ cpu_proc_stats fill_struct_of_cpu_stats() {
   cpu_proc_stats proc_info_stat_read;
   char stats_buffer[512];
   fgets(stats_buffer, sizeof(stats_buffer), cpu_stats_file_info);
-  //fclose(cpu_stats_file_info);
 
   int stats_read = sscanf(stats_buffer,
                     "%*s %llu %llu %llu %llu %llu %llu %llu %llu %llu %llu",
@@ -179,35 +147,41 @@ cpu_proc_stats fill_struct_of_cpu_stats() {
   return proc_info_stat_read;
 }
 
+// Had to change it to this kind of logic with cacheing last sample with static since approach with
+// std::this_thread::sleep_for(std::chrono::milliseconds(xxx)) was stealing few 4/5 fps with 50 ms refresh rate
+
 float get_cpu_utilization() {
   
-  // not sure if formula of this cpu utlization calculations is correct
-  // but final result in percentage value looks fine
+  cpu_proc_stats sample = fill_struct_of_cpu_stats();
 
-  cpu_proc_stats first_sample = fill_struct_of_cpu_stats();
+  static unsigned long long previous_idle = 0;
+  static unsigned long long previous_sum = 0;
+  static bool have_prev = false;
+  unsigned long long sample_sum = sample.user + sample.nice +
+                                  sample.system + sample.idle +
+                                  sample.iowait + sample.irq +
+                                  sample.softirq + sample.steal +
+                                  sample.guest + sample.guest_nice;
 
-  std::this_thread::sleep_for(std::chrono::milliseconds(50));
+  unsigned long long idle_iowait = sample.idle + sample.iowait;
 
-  cpu_proc_stats second_sample = fill_struct_of_cpu_stats();
+  if (!have_prev) {
 
-  unsigned long long first_sample_sum = first_sample.user    + first_sample.nice + 
-                                        first_sample.system  + first_sample.idle +
-                                        first_sample.iowait  + first_sample.irq +
-                                        first_sample.softirq + first_sample.steal +
-                                        first_sample.guest   + first_sample.guest_nice;
+    have_prev = true;
 
-  unsigned long long second_sample_sum = second_sample.user    + second_sample.nice +
-                                         second_sample.system  + second_sample.idle +
-                                         second_sample.iowait  + second_sample.irq +
-                                         second_sample.softirq + second_sample.steal +
-                                         second_sample.guest   + second_sample.guest_nice;
+    previous_idle = idle_iowait;
+    previous_sum = sample_sum;
 
-  unsigned long long idle1_iowait1 = first_sample.idle + first_sample.iowait;
-  unsigned long long idle2_iowait2 = second_sample.idle + second_sample.iowait;
-  unsigned long long delta_of_two_samples = second_sample_sum - first_sample_sum;
-  unsigned long long idle_iowait_delta_of_two_samples = idle2_iowait2 - idle1_iowait1;
+    return 0;
+  }
 
-  float cpu_utilization = (((float)(delta_of_two_samples)) - ((float)(idle_iowait_delta_of_two_samples))) / delta_of_two_samples * 100;
-  
-  return cpu_utilization;
-}
+  unsigned long long delta = sample_sum - previous_sum;
+  unsigned long long idle_delta = idle_iowait - previous_idle;
+
+  previous_sum = sample_sum;
+  previous_idle = idle_iowait;
+
+  float cpu_util = (((float)(delta)) - ((float)(idle_delta))) / delta * 100;
+
+  return cpu_util;
+ }

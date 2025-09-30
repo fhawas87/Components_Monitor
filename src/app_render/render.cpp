@@ -102,10 +102,9 @@ void MainWindow::window_features() {
 void MainWindow::main_loop() {
   
   double last_time = glfwGetTime();
-  //static sampler cs; // current system snaphot varaible
 
-  stats current_stats{};
-  min_max mm{};
+  stats current_stats{};           // Struct with current computer components snapshot
+  min_max mm{};                    // Struct with min/max values of each computer component
 
   while (!glfwWindowShouldClose(main_window)) {
 
@@ -113,21 +112,11 @@ void MainWindow::main_loop() {
     glfwPollEvents();
 
     // INFO - render here
-    /*
-    double current_time = glfwGetTime();
-    if (current_time - last_time >= 1.0) {
-      cs.refresh_samples();
-      last_time = current_time;
-    }
-    
-    const stats& sample_c = cs.snapshot();
-    */
 
     double current_time = glfwGetTime();
-    if (current_time - last_time >= 1.0) {
+    if (current_time - last_time >= 0.5) {
 
       current_stats = refresh_samples();
-      //mm = set_min_max(current_stats);
       update_min_max(current_stats, mm);
       last_time = current_time;
     }
@@ -135,7 +124,7 @@ void MainWindow::main_loop() {
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
-        
+  
     draw_system_dashboard(current_stats, mm);
 
     ImGui::Render();
@@ -150,7 +139,7 @@ void MainWindow::main_loop() {
 }
 
 void MainWindow::clean_up() {
-  
+
   ImGui_ImplOpenGL3_Shutdown();
   ImGui_ImplGlfw_Shutdown();
   ImGui::DestroyContext();

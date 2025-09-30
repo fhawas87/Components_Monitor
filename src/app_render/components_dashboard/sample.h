@@ -2,8 +2,6 @@
 
 #include <vector>
 #include <string>
-#include <chrono>
-#include <thread>
 
 #include "cpu.h"
 #include "gpu.h"
@@ -154,9 +152,8 @@ void draw_system_dashboard(stats &current_stats, min_max &mm) {
   
   ImGui::Begin("System Dashboard");
   ImGui::Separator();
-  ImGui::Text("%s            fps %.0f", current_stats.cpu.cpu_model.c_str(), ioo.Framerate);
+  ImGui::Text("CPU - %s      fps %.0f", current_stats.cpu.cpu_model.c_str(), ioo.Framerate);
   ImGui::Separator();
-  //ImGui::Text("                                     min  max");
   ImGui::Text("CPU Usage : %.0f %%                 min %0.f %% max %.0f %%", current_stats.cpu.cpu_usage, mm.min_cpu_usage, mm.max_cpu_usage);
   ImGui::Separator();
   for (size_t i = 0; i < current_stats.cpu.cpu_temps.size(); i++) {
@@ -166,17 +163,8 @@ void draw_system_dashboard(stats &current_stats, min_max &mm) {
   for (size_t i = 0; i < current_stats.cpu.cpu_temps.size(); i++) {
     ImGui::Text("CPU Core %zu : %.0f MHz            min %.0f MHz max %.0f Mhz", i, current_stats.cpu.cpu_freqs[i], mm.min_core_freq_veq[i], mm.max_core_freq_veq[i]);
   }
-
-  //for (size_t core = 0; core < current_stats.cpu.cpu_temps.size(); core++) {
-  //  ImGui::Text("CPU Core %zu : %.0f C %.0f MHz", core, current_stats.cpu.cpu_temps[core], current_stats.cpu.cpu_freqs[core]);
-  //}
-  //ImGui::Separator();
-  //for (size_t core = 0; core < current_stats.cpu.cpu_temps.size(); core++) {
-  //  ImGui::Text("min : %.0f C max : %.0f C min : %.0f MHz max : %.0f MHz", mm.min_core_temp_veq[core], mm.max_core_temp_veq[core], mm.min_core_freq_veq[core], mm.max_core_freq_veq[core]);
-  //}
-
   ImGui::Separator();
-  ImGui::Text("%s", current_stats.gpu.gpu_model.c_str());
+  ImGui::Text("GPU - %s", current_stats.gpu.gpu_model.c_str());
   ImGui::Separator();
   ImGui::Text("GPU Usage : %u %%                 min %u %% max %u %%", current_stats.gpu.gpu_usage, mm.min_gpu_usage, mm.max_gpu_usage);
   ImGui::Text("GPU Temp : %u C                  min %u C max %u C", current_stats.gpu.gpu_temp, mm.min_gpu_temp, mm.max_gpu_temp);
@@ -184,6 +172,8 @@ void draw_system_dashboard(stats &current_stats, min_max &mm) {
   if (!current_stats.gpu.gpu_vram.empty()) {
     ImGui::Text("GPU VRAM : %u MiB / %u MiB    min %u MiB max %u MiB", current_stats.gpu.gpu_vram[1], current_stats.gpu.gpu_vram[0], mm.min_gpu_vram, mm.max_gpu_vram);
   }
+  ImGui::Separator();
+  ImGui::Text("RAM");
   ImGui::Separator();
   ImGui::Text("RAM Usage : %u %%                 min %u %% max %u %%", current_stats.ram.ram_usage, mm.min_ram_usage, mm.max_ram_usage);
   ImGui::End();
