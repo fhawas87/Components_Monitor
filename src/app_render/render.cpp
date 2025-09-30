@@ -105,6 +105,7 @@ void MainWindow::main_loop() {
   //static sampler cs; // current system snaphot varaible
 
   stats current_stats{};
+  min_max mm{};
 
   while (!glfwWindowShouldClose(main_window)) {
 
@@ -126,42 +127,16 @@ void MainWindow::main_loop() {
     if (current_time - last_time >= 1.0) {
 
       current_stats = refresh_samples();
+      //mm = set_min_max(current_stats);
+      update_min_max(current_stats, mm);
       last_time = current_time;
     }
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
-    
-    /*
-    ImGui::Begin("Components Dashboard");
-    ImGui::Separator();
-    ImGui::Text("%s   fps %1.f", sample_c.cpu.cpu_model.c_str(), io->Framerate);
-    ImGui::Separator();
-    for (size_t i = 0; i < sample_c.cpu.cpu_temps.size(); i++) {
-      ImGui::Text("CPU Core #%zu : %.1f C   %.1f MHz", i, sample_c.cpu.cpu_temps[i], sample_c.cpu.cpu_freqs[i]);
-    }
-    ImGui::Text("CPU Usage : %.1f%%", sample_c.cpu.cpu_usage);
-    //for (size_t i = 0; i < sample_c.cpu.cpu_temps.size(); i++) {
-    //  ImGui::Text("CPU Core #%zu : %.1f C", i, sample_c.cpu.cpu_temps[i]);
-    //}
-    ImGui::Separator();
-    ImGui::Text("%s", sample_c.gpu.gpu_model.c_str());
-    ImGui::Separator();
-    ImGui::Text("GPU Usage : %u%%", sample_c.gpu.gpu_usage);
-    ImGui::Text("GPU Temp : %u C", sample_c.gpu.gpu_temp);
-    ImGui::Text("GPU Freq : %u MHz", sample_c.gpu.gpu_freq);
-    if (!sample_c.gpu.gpu_vram.empty()) {
-      ImGui::Text("GPU VRAM : %u MiB / %u MiB", sample_c.gpu.gpu_vram[1], sample_c.gpu.gpu_vram[0]);
-    }
-    ImGui::Separator();
-    ImGui::Text("RAM Usage : %u%%", sample_c.ram.ram_usage);
-    ImGui::Separator();
-    ImGui::End();
-    ImGui::Render();
-    */
-    
-    draw_system_dashboard(current_stats);
+        
+    draw_system_dashboard(current_stats, mm);
 
     ImGui::Render();
 
