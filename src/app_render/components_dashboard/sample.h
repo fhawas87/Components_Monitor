@@ -154,6 +154,7 @@ void draw_system_dashboard(stats &current_stats, min_max &mm) {
   ImGui::Separator();
   ImGui::Text("CPU - %s      fps %.0f", current_stats.cpu.cpu_model.c_str(), ioo.Framerate);
   ImGui::Separator();
+  // There is a problem with min value of cpu usage which is always 0% and it is not possible I guess TODO FIX
   ImGui::Text("CPU Usage : %.0f %%                 min %0.f %% max %.0f %%", current_stats.cpu.cpu_usage, mm.min_cpu_usage, mm.max_cpu_usage);
   ImGui::Separator();
   for (size_t i = 0; i < current_stats.cpu.cpu_temps.size(); i++) {

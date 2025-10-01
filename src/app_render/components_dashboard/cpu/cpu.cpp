@@ -149,6 +149,7 @@ cpu_proc_stats fill_struct_of_cpu_stats() {
 
 // Had to change it to this kind of logic with cacheing last sample with static since approach with
 // std::this_thread::sleep_for(std::chrono::milliseconds(xxx)) was stealing few 4/5 fps with 50 ms refresh rate
+// static there is used just so the values of those variables are remembered ( cached IG ) for another call of the function
 
 float get_cpu_utilization() {
   
@@ -172,7 +173,7 @@ float get_cpu_utilization() {
     previous_idle = idle_iowait;
     previous_sum = sample_sum;
 
-    return 0;
+    return 30; // INFO : returning 30 % usage as a starting values for min and max cpu usage so min/max samples are making sens
   }
 
   unsigned long long delta = sample_sum - previous_sum;

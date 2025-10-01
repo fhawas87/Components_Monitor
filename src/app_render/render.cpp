@@ -114,7 +114,7 @@ void MainWindow::main_loop() {
     // INFO - render here
 
     double current_time = glfwGetTime();
-    if (current_time - last_time >= 0.5) {
+    if (current_time - last_time >= 0.2) {
 
       current_stats = refresh_samples();
       update_min_max(current_stats, mm);
