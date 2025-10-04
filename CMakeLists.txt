@@ -33,7 +33,7 @@ set (SRC
   src/app_render/components_dashboard/cpu/cpu.cpp
   src/app_render/components_dashboard/gpu/gpu_c.c 
   src/app_render/components_dashboard/gpu/gpu_cpp.cpp
-  src/app_render/components_dashboard/ram/ram.c 
+  src/app_render/components_dashboard/ram/ram.cpp
 )
 
 #set(EXTERNAL ${CMAKE_CURRENT_SOURCE_DIR}/external)

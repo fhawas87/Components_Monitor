@@ -1,11 +1,6 @@
 #pragma once
 
-#ifdef __cplusplus
-  extern "C" {
-#endif
+#include <vector>
 
-unsigned int get_ram_memory_usage(void);
+std::vector<unsigned int> get_ram_memory();
 
-#ifdef __cplusplus
-}
-#endif
