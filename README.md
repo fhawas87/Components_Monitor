@@ -2,5 +2,5 @@
 
 <p allign="center">
     <img src="ss/1.png" alt="1" width="400">
-    <img src="ss/2.png" alt="2" width="410">
+    <img src="ss/3.png" alt="3" width="400">
 </p>
