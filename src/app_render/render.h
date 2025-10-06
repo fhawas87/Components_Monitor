@@ -2,6 +2,9 @@
 
 #include <cstdint>
 
+#include <sensors/sensors.h>
+#include <nvml.h>
+
 struct GLFWwindow;
 struct ImGuiIO;
 
@@ -17,29 +20,38 @@ struct WindowMacros {
   static constexpr bool       ShowWindow_2          = true;
 
   static constexpr bool       FULL_WINDOW_ENABLED   = false;
-
 }; 
   
 class MainWindow {
-
 public:
-
-  void RunMainWindow() {
-
+  
+  MainWindow() {
+    
     window_init();
     opengl_init();
+    apis_init();
     window_features();
-    main_loop();
+  }
+  
+  int run_window() { return main_loop(); }
+
+  ~MainWindow() noexcept{
+
     clean_up();
+
+    nvmlShutdown();
+    sensors_cleanup();
   }
 
 private:
 
   void window_init();
   void opengl_init();
+  void apis_init();
   void window_features();
-  void main_loop();
   void clean_up();
+  
+  int main_loop();
 
   GLFWwindow* main_window = nullptr;
   ImGuiIO* io = nullptr;
