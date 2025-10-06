@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <string>
 
 #include <GL/glew.h>
 
@@ -7,6 +8,9 @@
 #include <imgui.h>
 #include <backends/imgui_impl_opengl3.h>
 #include <backends/imgui_impl_glfw.h>
+
+#include <sensors/sensors.h>
+#include <nvml.h>
 
 #include "render.h"
 #include "theme.h"
@@ -75,6 +79,26 @@ void MainWindow::opengl_init() {
   #endif
 }
 
+void MainWindow::apis_init() {
+
+  nvmlReturn_t initialize_result;
+  initialize_result = nvmlInit_v2();
+
+  if (initialize_result != NVML_SUCCESS) {
+    
+    std::string error_code;
+    error_code = nvmlErrorString(initialize_result);
+
+    throw std::runtime_error(std::string("\nERROR INFO : ") + error_code);
+    nvmlShutdown();
+  }
+  if (sensors_init(NULL) != 0) {
+
+    throw std::runtime_error("\nERROR INFO : 'libsensors library initialization error'\n");
+    sensors_cleanup();
+  }
+}
+
 void MainWindow::window_features() {
 
   IMGUI_CHECKVERSION();
@@ -99,7 +123,7 @@ void MainWindow::window_features() {
   ImGui_ImplOpenGL3_Init(OPENGL_VERSION);
 }
 
-void MainWindow::main_loop() {
+int MainWindow::main_loop() {
   
   double last_time = glfwGetTime();
 
@@ -136,6 +160,8 @@ void MainWindow::main_loop() {
 
     glfwSwapBuffers(main_window);
   }
+
+  return 0;
 }
 
 void MainWindow::clean_up() {
