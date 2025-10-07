@@ -6,6 +6,7 @@
 #include <GLFW/glfw3.h>
 
 #include <imgui.h>
+#include <implot.h>
 #include <backends/imgui_impl_opengl3.h>
 #include <backends/imgui_impl_glfw.h>
 
@@ -104,6 +105,7 @@ void MainWindow::window_features() {
   IMGUI_CHECKVERSION();
 
   ImGui::CreateContext();
+  ImPlot::CreateContext();
 
   io = &ImGui::GetIO();
   io->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
