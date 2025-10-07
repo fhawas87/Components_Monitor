@@ -40,6 +40,7 @@ set (SRC
 #set(IMGUI_DIR ${EXTERNAL}/imgui)
 
 set(IMGUI_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/imgui)
+set(IMPLOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/implot)
 
 add_library(imgui STATIC
   
@@ -51,10 +52,18 @@ add_library(imgui STATIC
   ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
+add_library(implot STATIC
+  
+  ${IMPLOT_DIR}/implot.cpp
+  ${IMPLOT_DIR}/implot_items.cpp
+)
+
 target_compile_definitions(imgui PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLEW)
 
 add_executable(${PROJECT_NAME} ${SRC})
 
+target_include_directories(implot PUBLIC ${IMPLOT_DIR})
+target_link_libraries(implot PUBLIC imgui)
 target_include_directories(imgui PUBLIC ${IMGUI_DIR} ${IMGUI_DIR}/backends)
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -65,6 +74,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
   imgui
+  implot
   glfw 
   GLEW::GLEW
   OpenGL::GL
