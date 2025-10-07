@@ -2,5 +2,5 @@
 
 #include <vector>
 
-std::vector<unsigned int> get_ram_memory();
+std::vector<float> get_ram_memory();
 

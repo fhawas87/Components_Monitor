@@ -2,9 +2,9 @@
 #include <string.h>
 #include <vector>
 
-std::vector<unsigned int> get_ram_memory() {
+std::vector<float> get_ram_memory() {
 
-  std::vector<unsigned int> ram_params;
+  std::vector<float> ram_params;
   FILE *mem_info = fopen("/proc/meminfo", "r");
   if (!mem_info) {
     printf("Something wrong with given path\n");
@@ -28,10 +28,10 @@ std::vector<unsigned int> get_ram_memory() {
 
   fclose(mem_info);
 
-  double total_ram_MiB = (double)(total_ram / 1024);
-  double available_ram_MiB = (double)(available_ram / 1024);
-  double ram_usage = (total_ram_MiB - available_ram_MiB) / total_ram_MiB * 100;
-  double used_ram_MiB = total_ram_MiB - available_ram_MiB;
+  float total_ram_MiB = (float)(total_ram / 1024);
+  float available_ram_MiB = (float)(available_ram / 1024);
+  float ram_usage = (total_ram_MiB - available_ram_MiB) / total_ram_MiB * 100;
+  float used_ram_MiB = total_ram_MiB - available_ram_MiB;
 
   ram_params.emplace_back((unsigned int)total_ram_MiB);
   ram_params.emplace_back((unsigned int)available_ram_MiB);
