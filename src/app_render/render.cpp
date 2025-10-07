@@ -140,6 +140,7 @@ void MainWindow::clean_up() {
   ImGui_ImplOpenGL3_Shutdown();
   ImGui_ImplGlfw_Shutdown();
   ImGui::DestroyContext();
+  ImPlot::DestroyContext();
 
   glfwDestroyWindow(main_window);
   glfwTerminate();
