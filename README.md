@@ -1,4 +1,5 @@
-<h2><p>Custom computer components monitor application. Working only with Intel CPU and Nvidia GPU on linux.<p><h2>
+<h2><p>Custom computer components monitor application. Working only with Intel CPU and Nvidia GPU only on linux os.<p><h2>
+<h3><p>Created using ImGui with ImPlot for charts drawing. Also used nvml.h for GPU parameters and libsensors lib for CPU parameters. The rest of information is beeing retrieved from system files ( for example : /proc/meminfo ).<p><h3>
 
 <p allign="center">
     <img src="ss/4.png" alt="4" width="400">
