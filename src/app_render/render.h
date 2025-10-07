@@ -12,7 +12,7 @@ struct WindowMacros {
   
   static constexpr uint16_t   WIDTH                 = 1600;
   static constexpr uint16_t   HEIGHT                = 900;
-  static constexpr char       TITLE[]               = "Application";
+  static constexpr char       TITLE[]               = "Custom Components Monitor Application";
 
   static constexpr bool       DOCKING               = true;
   static constexpr bool       VIEWPORT              = false;
