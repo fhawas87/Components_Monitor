@@ -40,9 +40,9 @@ std::string get_accessible_device_name() {
   return device_name_string;
 }
 
-std::vector<unsigned int> get_gpu_VRAM_info() {
+std::vector<float> get_gpu_VRAM_info() {
 
-  std::vector<unsigned int> memory_info;
+  std::vector<float> memory_info;
 
   nvmlDevice_t device = get_device();
   nvmlMemory_t memory;
@@ -59,10 +59,10 @@ std::vector<unsigned int> get_gpu_VRAM_info() {
   unsigned int total_VRAM_used_MiB = (memory.used / 1024 / 1024);
   unsigned int total_VRAM_free_MiB = (memory.free / 1024 / 1024);
 
-  memory_info.emplace_back(total_VRAM_installed_MiB);
-  memory_info.emplace_back(total_VRAM_used_MiB);
-  memory_info.emplace_back(total_VRAM_free_MiB);
-  memory_info.emplace_back(VRAM_memory_percentage_usage);
+  memory_info.emplace_back((float)total_VRAM_installed_MiB);
+  memory_info.emplace_back((float)total_VRAM_used_MiB);
+  memory_info.emplace_back((float)total_VRAM_free_MiB);
+  memory_info.emplace_back((float)VRAM_memory_percentage_usage);
 
   return memory_info;
 }
