@@ -19,5 +19,5 @@ unsigned int get_gpu_clock_frequency(void);
 #ifdef __cplusplus
   }
   std::string get_accessible_device_name();
-  std::vector<unsigned int> get_gpu_VRAM_info();
+  std::vector<float> get_gpu_VRAM_info();
 #endif
