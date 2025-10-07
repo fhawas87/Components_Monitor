@@ -15,14 +15,11 @@
 
 #include "render.h"
 #include "theme.h"
+#include "draw.h"
 #include "components_dashboard/sample.h"
 
 
-// INFO : very useful function in case of any glfw init errors
-
 static void glfw_error_callback(int error, const char* error_description) { fprintf(stderr, "%d : %s\n", error, error_description);}
-//static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-
 
 const char* OPENGL_VERSION;
 
@@ -37,33 +34,12 @@ void MainWindow::window_init() {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  
-  /*
-  if (WindowMacros::FULL_WINDOW_ENABLED) {
     
-    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-    glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-    glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-    glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-    glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-
-    main_window = glfwCreateWindow(mode->width, mode->height, WindowMacros::TITLE, monitor, nullptr);
-  }
-  if (!WindowMacros::FULL_WINDOW_ENABLED) {
-    main_window = glfwCreateWindow(WindowMacros::WIDTH, WindowMacros::HEIGHT, WindowMacros::TITLE, nullptr, nullptr);
-  }
-
-  if (main_window == nullptr || main_window == NULL) { throw std::runtime_error("Window Creation Failure!\n\n"); }
-  */
-  
   main_window = glfwCreateWindow(WindowMacros::WIDTH, WindowMacros::HEIGHT, WindowMacros::TITLE, nullptr, nullptr);
 
   if (main_window == nullptr) { throw std::runtime_error("Window failed!\n"); }
 
   glfwMakeContextCurrent(main_window);
-  //glfwSetFramebufferSizeCallback(main_window, framebuffer_size_callback);
   glfwSwapInterval(1);
 }
 
@@ -109,17 +85,14 @@ void MainWindow::window_features() {
 
   io = &ImGui::GetIO();
   io->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-  
-  // FIX : cannot compile those two flags, compiler can't find those functions 
-  // INFO : forgot to add docking branch from imgui github and where those functions are located, now it is working 
 
   if (WindowMacros::DOCKING && io != nullptr) { io->ConfigFlags |= ImGuiConfigFlags_DockingEnable; }
   if (WindowMacros::VIEWPORT && io != nullptr) { io->ConfigFlags &= ~ImGuiConfigFlags_ViewportsEnable; }
 
-  // INFO - apply theme here
-
   Theme theme;
   theme.ApplyTheme();
+
+  implot_theme(theme.LightGrey);
   
   ImGui_ImplGlfw_InitForOpenGL(main_window, true);
   ImGui_ImplOpenGL3_Init(OPENGL_VERSION);
@@ -129,18 +102,13 @@ int MainWindow::main_loop() {
   
   double last_time = glfwGetTime();
 
-  stats current_stats{};           // Struct with current computer components snapshot
-  min_max mm{};                    // Struct with min/max values of each computer component
-
   while (!glfwWindowShouldClose(main_window)) {
 
     glfwSetErrorCallback(glfw_error_callback);
     glfwPollEvents();
 
-    // INFO - render here
-
     double current_time = glfwGetTime();
-    if (current_time - last_time >= 0.2) {
+    if (current_time - last_time >= 0.5) {
 
       current_stats = refresh_samples();
       update_min_max(current_stats, mm);
@@ -152,6 +120,7 @@ int MainWindow::main_loop() {
     ImGui::NewFrame();
   
     draw_system_dashboard(current_stats, mm);
+    draw_system_charts();
 
     ImGui::Render();
 
@@ -175,5 +144,3 @@ void MainWindow::clean_up() {
   glfwDestroyWindow(main_window);
   glfwTerminate();
 }
-
-//void framebuffer_size_callback(GLFWwindow* window, int width, int height) { glViewport(0, 0, width, height); }
