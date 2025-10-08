@@ -112,11 +112,11 @@ stats refresh_samples() {
   static bool been_vec_rings_resized = false;
   static bool been_val_rings_initialized = false;
 
-  current_stats.gpu.gpu_model     = get_accessible_device_name();
-  current_stats.cpu.cpu_usage     = get_cpu_utilization();
-  current_stats.gpu.gpu_usage     = get_core_utilization_percentage_rate();
-  current_stats.gpu.gpu_temp      = get_current_gpu_temperature();
-  current_stats.gpu.gpu_freq      = get_gpu_clock_frequency();
+  current_stats.gpu.gpu_model = get_accessible_device_name();
+  current_stats.cpu.cpu_usage = get_cpu_utilization();
+  current_stats.gpu.gpu_usage = get_core_utilization_percentage_rate();
+  current_stats.gpu.gpu_temp = get_current_gpu_temperature();
+  current_stats.gpu.gpu_freq = get_gpu_clock_frequency();
   
   if (!been_val_rings_initialized) {
 
@@ -133,10 +133,10 @@ stats refresh_samples() {
   manage_ring_data_val((float)current_stats.gpu.gpu_temp, ring_data.gpu_temp_ring);
   manage_ring_data_val((float)current_stats.gpu.gpu_freq, ring_data.gpu_freq_ring);
 
-  current_stats.cpu.cpu_temps     = get_cpu_core_thermal_values();
-  current_stats.cpu.cpu_freqs     = get_cpu_core_frequencies();
-  current_stats.gpu.gpu_vram      = get_gpu_VRAM_info();
-  current_stats.ram.ram_info      = get_ram_memory();
+  current_stats.cpu.cpu_temps = get_cpu_core_thermal_values();
+  current_stats.cpu.cpu_freqs = get_cpu_core_frequencies();
+  current_stats.gpu.gpu_vram = get_gpu_VRAM_info();
+  current_stats.ram.ram_info = get_ram_memory();
 
   for (size_t i = 0; i < current_stats.cpu.cpu_freqs.size(); i++) {
     if (current_stats.cpu.cpu_freqs[i] > fcq) { fcq *= 1.25; }
@@ -195,20 +195,20 @@ void update_min_max(stats &current_stats, min_max &mm) {
     current_stats.gpu.gpu_vram.resize(4);
     current_stats.ram.ram_info.resize(4);
 
-    mm.min_gpu_vram     = current_stats.gpu.gpu_vram[1];
-    mm.max_gpu_vram     = current_stats.gpu.gpu_vram[1];
-    mm.min_cpu_usage    = current_stats.cpu.cpu_usage;
-    mm.max_cpu_usage    = current_stats.cpu.cpu_usage;
-    mm.min_gpu_usage    = current_stats.gpu.gpu_usage;
-    mm.max_gpu_usage    = current_stats.gpu.gpu_usage;
-    mm.min_gpu_temp     = current_stats.gpu.gpu_temp;
-    mm.max_gpu_temp     = current_stats.gpu.gpu_temp;
-    mm.min_gpu_freq     = current_stats.gpu.gpu_freq;
-    mm.max_gpu_freq     = current_stats.gpu.gpu_freq;
-    mm.min_ram_usage_m  = current_stats.ram.ram_info[2];
-    mm.max_ram_usage_m  = current_stats.ram.ram_info[2];
-    mm.min_ram_usage    = current_stats.ram.ram_info[3];
-    mm.max_ram_usage    = current_stats.ram.ram_info[3];
+    mm.min_gpu_vram = current_stats.gpu.gpu_vram[1];
+    mm.max_gpu_vram = current_stats.gpu.gpu_vram[1];
+    mm.min_cpu_usage = current_stats.cpu.cpu_usage;
+    mm.max_cpu_usage = current_stats.cpu.cpu_usage;
+    mm.min_gpu_usage = current_stats.gpu.gpu_usage;
+    mm.max_gpu_usage = current_stats.gpu.gpu_usage;
+    mm.min_gpu_temp = current_stats.gpu.gpu_temp;
+    mm.max_gpu_temp = current_stats.gpu.gpu_temp;
+    mm.min_gpu_freq = current_stats.gpu.gpu_freq;
+    mm.max_gpu_freq = current_stats.gpu.gpu_freq;
+    mm.min_ram_usage_m = current_stats.ram.ram_info[2];
+    mm.max_ram_usage_m = current_stats.ram.ram_info[2];
+    mm.min_ram_usage = current_stats.ram.ram_info[3];
+    mm.max_ram_usage = current_stats.ram.ram_info[3];
 
     is_min_max_base_set = true;
   }

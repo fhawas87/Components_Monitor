@@ -33,10 +33,10 @@ std::vector<float> get_ram_memory() {
   float ram_usage = (total_ram_MiB - available_ram_MiB) / total_ram_MiB * 100;
   float used_ram_MiB = total_ram_MiB - available_ram_MiB;
 
-  ram_params.emplace_back((unsigned int)total_ram_MiB);
-  ram_params.emplace_back((unsigned int)available_ram_MiB);
-  ram_params.emplace_back((unsigned int)used_ram_MiB);
-  ram_params.emplace_back((unsigned int)ram_usage);
+  ram_params.emplace_back(total_ram_MiB);
+  ram_params.emplace_back(available_ram_MiB);
+  ram_params.emplace_back(used_ram_MiB);
+  ram_params.emplace_back(ram_usage);
 
   return ram_params;
 }

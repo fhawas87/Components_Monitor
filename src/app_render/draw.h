@@ -167,7 +167,7 @@ void ram_chart() {
     ImPlot::SetupAxesLimits(0, MSH, 0, current_stats.ram.ram_info[0], ImGuiCond_Always);
 
     if (!ring_data.ram_ring.empty()) {
-      ImPlot::PlotLine("ram usage MiB", ring_data.ram_ring[2].data(), ring_data.ram_ring.size());
+      ImPlot::PlotLine("ram usage MiB", ring_data.ram_ring[2].data(), ring_data.ram_ring[2].size());
     }
     ImPlot::EndPlot();
   }
@@ -177,7 +177,7 @@ void ram_chart() {
     ImPlot::SetupAxesLimits(0, MSH, 0, 100, ImGuiCond_Always);
 
     if (!ring_data.ram_ring.empty()) {
-      ImPlot::PlotLine("ram usage %", ring_data.ram_ring[3].data(), ring_data.ram_ring.size());
+      ImPlot::PlotLine("ram usage %", ring_data.ram_ring[3].data(), ring_data.ram_ring[3].size());
     }
     ImPlot::EndPlot();
   }
@@ -200,7 +200,7 @@ void draw_system_charts() {
     gpu_chart();
   }
 
-  if (ImGui::CollapsingHeader("Ram", ImGuiTreeNodeFlags_DefaultOpen)) {
+  if (ImGui::CollapsingHeader("RAM", ImGuiTreeNodeFlags_DefaultOpen)) {
     ram_chart();
   }
   ImGui::End();
