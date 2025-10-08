@@ -107,7 +107,6 @@ inline ring ring_data{};
 inline stats current_stats{};
 inline min_max mm{};
 
-
 stats refresh_samples() {
   
   static bool been_vec_rings_resized = false;
@@ -176,7 +175,7 @@ stats refresh_samples() {
 
 void update_min_max(stats &current_stats, min_max &mm) {
 
-  static is_min_max_base_set = false;
+  static bool is_min_max_base_set = false;
   
   if (!is_min_max_base_set) {
     
