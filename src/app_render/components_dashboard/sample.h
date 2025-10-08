@@ -1,6 +1,6 @@
 #pragma once
 
-#define MSH 150 // MAX SAMPLE HISTORY
+#define MSH 200 // MAX SAMPLE HISTORY
 
 #include <vector>
 #include <string>
@@ -138,9 +138,13 @@ stats refresh_samples() {
   current_stats.gpu.gpu_vram      = get_gpu_VRAM_info();
   current_stats.ram.ram_info      = get_ram_memory();
 
+  for (size_t i = 0; i < current_stats.cpu.cpu_freqs.size(); i++) {
+    if (current_stats.cpu.cpu_freqs[i] > fcq) { fcq *= 1.25; }
+  }
+
   if (!been_vec_rings_resized) {
 
-    ring_data.cpu_temp_ring.resize(current_stats.cpu.cpu_temps.size());                                        // HAD TO RESIZE VECTORS BEFORE LOOPING THROUGHT THEM IN manage_ring_data() FUNCTION  
+    ring_data.cpu_temp_ring.resize(current_stats.cpu.cpu_temps.size());    // HAD TO RESIZE VECTORS BEFORE LOOPING THROUGHT THEM IN manage_ring_data() FUNCTION  
     ring_data.cpu_freq_ring.resize(current_stats.cpu.cpu_temps.size());
     ring_data.gpu_vram_ring.resize(4);
     ring_data.ram_ring.resize(4);
@@ -150,8 +154,6 @@ stats refresh_samples() {
       float current_core_freq_value = current_stats.cpu.cpu_freqs[i];
       ring_data.cpu_temp_ring[i].emplace_back(current_core_temp_value);
       ring_data.cpu_freq_ring[i].emplace_back(current_core_freq_value);
-
-      if (current_stats.cpu.cpu_freqs[i] > fcq) { fcq *= 1.25; }
     }
     for (size_t i = 0; i < 4; i++) {
       float current_vram_value = current_stats.gpu.gpu_vram[i];
@@ -190,8 +192,7 @@ void update_min_max(stats &current_stats, min_max &mm) {
       mm.min_core_freq_veq[core] = current_stats.cpu.cpu_freqs[core];
       mm.max_core_freq_veq[core] = current_stats.cpu.cpu_freqs[core];
     }
-    current_stats.gpu.gpu_vram.resize(3);
-    current_stats.gpu.gpu_vram.resize(3);
+    current_stats.gpu.gpu_vram.resize(4);
     current_stats.ram.ram_info.resize(4);
 
     mm.min_gpu_vram     = current_stats.gpu.gpu_vram[1];
