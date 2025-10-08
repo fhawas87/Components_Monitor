@@ -107,11 +107,12 @@ inline ring ring_data{};
 inline stats current_stats{};
 inline min_max mm{};
 
-bool been_vec_rings_resized = false;
-bool been_val_rings_initialized = false;
 
 stats refresh_samples() {
   
+  static bool been_vec_rings_resized = false;
+  static bool been_val_rings_initialized = false;
+
   current_stats.gpu.gpu_model     = get_accessible_device_name();
   current_stats.cpu.cpu_usage     = get_cpu_utilization();
   current_stats.gpu.gpu_usage     = get_core_utilization_percentage_rate();
@@ -165,7 +166,7 @@ stats refresh_samples() {
     been_vec_rings_resized = true;  // ONLY NEED TO RESIZE AND PUSH SOMETHING TO THE VECTORS ONCE SO FLAG IS NEEDED FOR STOPPING IT IG
   }
 
-  manage_ring_data_vec(current_stats.cpu.cpu_temps, ring_data.cpu_temp_ring);                                
+  manage_ring_data_vec(current_stats.cpu.cpu_temps, ring_data.cpu_temp_ring); 
   manage_ring_data_vec(current_stats.cpu.cpu_freqs, ring_data.cpu_freq_ring);
   manage_ring_data_vec(current_stats.gpu.gpu_vram, ring_data.gpu_vram_ring);
   manage_ring_data_vec(current_stats.ram.ram_info, ring_data.ram_ring);
@@ -173,9 +174,9 @@ stats refresh_samples() {
   return current_stats;
 }
 
-bool is_min_max_base_set = false;
-
 void update_min_max(stats &current_stats, min_max &mm) {
+
+  static is_min_max_base_set = false;
   
   if (!is_min_max_base_set) {
     
