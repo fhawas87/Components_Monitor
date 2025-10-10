@@ -12,7 +12,7 @@
 
 #include <imgui.h>
 
-struct min_max {
+struct min_max {  // Tracking min/max values of each parameter
 
   std::vector<float> min_core_temp_veq;
   std::vector<float> max_core_temp_veq;
@@ -220,8 +220,6 @@ void update_min_max(stats &current_stats, min_max &mm) {
     if (current_stats.cpu.cpu_freqs[core] < mm.min_core_freq_veq[core]) { mm.min_core_freq_veq[core] = current_stats.cpu.cpu_freqs[core]; }
     if (current_stats.cpu.cpu_freqs[core] > mm.max_core_freq_veq[core]) { mm.max_core_freq_veq[core] = current_stats.cpu.cpu_freqs[core]; }
   }
-  if (current_stats.gpu.gpu_vram[1]   < mm.min_gpu_vram)      { mm.min_gpu_vram     = current_stats.gpu.gpu_vram[1]; }
-  if (current_stats.gpu.gpu_vram[1]   > mm.max_gpu_vram)      { mm.max_gpu_vram     = current_stats.gpu.gpu_vram[1]; }
   if (current_stats.gpu.gpu_usage     < mm.min_gpu_usage)     { mm.min_gpu_usage    = current_stats.gpu.gpu_usage; }
   if (current_stats.gpu.gpu_usage     > mm.max_gpu_usage)     { mm.max_gpu_usage    = current_stats.gpu.gpu_usage; }
   if (current_stats.gpu.gpu_temp      < mm.min_gpu_temp)      { mm.min_gpu_temp     = current_stats.gpu.gpu_temp; }
@@ -230,9 +228,10 @@ void update_min_max(stats &current_stats, min_max &mm) {
   if (current_stats.gpu.gpu_freq      > mm.max_gpu_freq)      { mm.max_gpu_freq     = current_stats.gpu.gpu_freq; }
   if (current_stats.cpu.cpu_usage     < mm.min_cpu_usage)     { mm.min_cpu_usage    = current_stats.cpu.cpu_usage; }
   if (current_stats.cpu.cpu_usage     > mm.max_cpu_usage)     { mm.max_cpu_usage    = current_stats.cpu.cpu_usage; }
+  if (current_stats.gpu.gpu_vram[1]   < mm.min_gpu_vram)      { mm.min_gpu_vram     = current_stats.gpu.gpu_vram[1]; }
+  if (current_stats.gpu.gpu_vram[1]   > mm.max_gpu_vram)      { mm.max_gpu_vram     = current_stats.gpu.gpu_vram[1]; }
   if (current_stats.ram.ram_info[2]   < mm.min_ram_usage_m)   { mm.min_ram_usage_m  = current_stats.ram.ram_info[2]; }
   if (current_stats.ram.ram_info[2]   > mm.max_ram_usage_m)   { mm.max_ram_usage_m  = current_stats.ram.ram_info[2]; }
   if (current_stats.ram.ram_info[3]   < mm.min_ram_usage)     { mm.min_ram_usage    = current_stats.ram.ram_info[3]; }
   if (current_stats.ram.ram_info[3]   > mm.max_ram_usage)     { mm.max_ram_usage    = current_stats.ram.ram_info[3]; }
-
 }
