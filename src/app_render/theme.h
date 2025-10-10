@@ -1,7 +1,7 @@
 #pragma once
 
 #include <imgui.h>
-
+/*
 struct Theme {
   
   const ImVec4 LightGrey = ImVec4(0.96f, 0.96f, 0.96f, 1.0f);
@@ -22,3 +22,4 @@ struct Theme {
     s.WindowPadding = ImVec2(padding, padding);
   }
 };
+*/

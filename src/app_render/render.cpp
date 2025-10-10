@@ -2,7 +2,6 @@
 #include <string>
 
 #include <GL/glew.h>
-
 #include <GLFW/glfw3.h>
 
 #include <imgui.h>
@@ -47,7 +46,7 @@ void MainWindow::opengl_init() {
 
   #if defined(IMGUI_IMPL_OPENGL_LOADER_GLAD)
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-      throw std::runtime_error("Failed to load using GLAD!\n\n");
+  throw std::runtime_error("Failed to load using GLAD!\n\n");
   }
   #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLEW)
     if (glewInit() != GLEW_OK) {
@@ -89,10 +88,11 @@ void MainWindow::window_features() {
   if (WindowMacros::DOCKING && io != nullptr) { io->ConfigFlags |= ImGuiConfigFlags_DockingEnable; }
   if (WindowMacros::VIEWPORT && io != nullptr) { io->ConfigFlags &= ~ImGuiConfigFlags_ViewportsEnable; }
 
-  Theme theme;
-  theme.ApplyTheme();
+  ImGui_Theme Gui_Instance;
+  ImPlot_Theme Plot_Instance;
 
-  implot_theme(theme.LightGrey);
+  Gui_Instance.ApplyTheme();
+  Plot_Instance.ApplyTheme();
   
   ImGui_ImplGlfw_InitForOpenGL(main_window, true);
   ImGui_ImplOpenGL3_Init(OPENGL_VERSION);
