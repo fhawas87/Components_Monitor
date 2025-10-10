@@ -26,6 +26,7 @@ class ImPlot_Theme {
 public:
   
   const ImVec4 LightGrey = ImVec4(0.96f, 0.96f, 0.96f, 1.0f);
+  const ImVec4 White = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
   const ImVec4 ChartsBG = ImVec4(0.16f, 0.16f, 0.16f, 1.0f);
 
   inline void ApplyTheme() {
@@ -36,7 +37,7 @@ public:
 
     plot_style.Colors[ImPlotCol_PlotBg] = ChartsBG;
     plot_style.Colors[ImPlotCol_FrameBg] = ChartsBG;
-    plot_style.Colors[ImPlotCol_AxisText] = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+    plot_style.Colors[ImPlotCol_AxisText] = White;
     plot_style.Colors[ImPlotCol_AxisGrid] = ImVec4(0.50f, 0.50f, 0.50f, 1.0f);
 
     static bool is_colormap_installed = false;
@@ -49,6 +50,11 @@ public:
 
       is_colormap_installed = true;
     }
+  }
+
+  void SetMarkersTheme() {
+
+    ImPlot::SetNextMarkerStyle(ImPlotMarker_Square, 1.5, White, IMPLOT_AUTO, White);
   }
 };
 
@@ -89,6 +95,8 @@ void draw_system_dashboard(stats &current_stats, min_max &mm) {
 }
 
 void cpu_chart() {
+  
+  ImPlot_Theme ipth;
 
   if (ImPlot::BeginPlot("CPU Usage")) {
     ImPlot::SetupAxes("t[s]", "%");
@@ -96,6 +104,10 @@ void cpu_chart() {
     
     if (!ring_data.cpu_usage_ring.empty()) {
       ImPlot::PlotLine("cpu usage", ring_data.cpu_usage_ring.data(), ring_data.cpu_usage_ring.size());
+
+      ipth.SetMarkersTheme();
+      
+      ImPlot::PlotScatter("cpu usage", ring_data.cpu_usage_ring.data(), ring_data.cpu_usage_ring.size());
     }
     ImPlot::EndPlot();
   }
@@ -109,6 +121,10 @@ void cpu_chart() {
 
       if (!current_stats.cpu.cpu_temps.empty()) {
         ImPlot::PlotLine(current_core_index.c_str(), ring_data.cpu_temp_ring[core].data(), ring_data.cpu_temp_ring[core].size());
+
+        ipth.SetMarkersTheme();
+
+        ImPlot::PlotScatter(current_core_index.c_str(), ring_data.cpu_temp_ring[core].data(), ring_data.cpu_temp_ring[core].size());
       }
       ImPlot::EndPlot();
     }
@@ -123,6 +139,10 @@ void cpu_chart() {
 
       if (!ring_data.cpu_freq_ring.empty()) {
         ImPlot::PlotLine(current_core_index.c_str(), ring_data.cpu_freq_ring[core].data(), ring_data.cpu_freq_ring[core].size());
+
+        ipth.SetMarkersTheme();
+
+        ImPlot::PlotScatter(current_core_index.c_str(), ring_data.cpu_freq_ring[core].data(), ring_data.cpu_freq_ring[core].size());
       }
       ImPlot::EndPlot();
     }
@@ -130,6 +150,8 @@ void cpu_chart() {
 }
 
 void gpu_chart() {
+  
+  ImPlot_Theme ipth;
 
   if (ImPlot::BeginPlot("GPU Usage")) {
     ImPlot::SetupAxes("t[s]", "%");
@@ -137,6 +159,10 @@ void gpu_chart() {
 
     if (!ring_data.gpu_usage_ring.empty()) {
       ImPlot::PlotLine("gpu usage", ring_data.gpu_usage_ring.data(), ring_data.gpu_usage_ring.size());
+
+      ipth.SetMarkersTheme();
+
+      ImPlot::PlotScatter("gpu usage", ring_data.gpu_usage_ring.data(), ring_data.gpu_usage_ring.size());
     }
     ImPlot::EndPlot();
   }
@@ -147,6 +173,10 @@ void gpu_chart() {
 
     if (!ring_data.gpu_temp_ring.empty()) {
       ImPlot::PlotLine("gpu temperature", ring_data.gpu_temp_ring.data(), ring_data.gpu_temp_ring.size());
+
+      ipth.SetMarkersTheme();
+
+      ImPlot::PlotScatter("gpu temperature", ring_data.gpu_temp_ring.data(), ring_data.gpu_temp_ring.size());
     }
     ImPlot::EndPlot();
   }
@@ -157,6 +187,10 @@ void gpu_chart() {
 
     if (!ring_data.gpu_freq_ring.empty()) {
       ImPlot::PlotLine("gpu frequencie", ring_data.gpu_freq_ring.data(), ring_data.gpu_freq_ring.size());
+
+      ipth.SetMarkersTheme();
+
+      ImPlot::PlotScatter("gpu frequency", ring_data.gpu_freq_ring.data(), ring_data.gpu_freq_ring.size());
     }
     ImPlot::EndPlot();
   }
@@ -167,6 +201,10 @@ void gpu_chart() {
 
     if (!ring_data.gpu_vram_ring.empty()) {
       ImPlot::PlotLine("gpu vram MiB", ring_data.gpu_vram_ring[1].data(), ring_data.gpu_vram_ring[1].size());
+
+      ipth.SetMarkersTheme();
+
+      ImPlot::PlotScatter("gpu vram MiB", ring_data.gpu_vram_ring[1].data(), ring_data.gpu_vram_ring[1].size());
     }
     ImPlot::EndPlot();
   }
@@ -177,6 +215,10 @@ void gpu_chart() {
 
     if (!ring_data.gpu_vram_ring.empty()) {
       ImPlot::PlotLine("gpu vram %", ring_data.gpu_vram_ring[3].data(), ring_data.gpu_vram_ring[3].size());
+
+      ipth.SetMarkersTheme();
+
+      ImPlot::PlotScatter("gpu vram %", ring_data.gpu_vram_ring[3].data(), ring_data.gpu_vram_ring[3].size());
     }
     ImPlot::EndPlot();
   }
@@ -184,12 +226,18 @@ void gpu_chart() {
 
 void ram_chart() {
 
+  ImPlot_Theme ipth;
+
   if (ImPlot::BeginPlot("RAM Usage (MiB)")) {
     ImPlot::SetupAxes("t[s]", "MiB");
     ImPlot::SetupAxesLimits(0, MSH, 0, current_stats.ram.ram_info[0], ImGuiCond_Always);
 
     if (!ring_data.ram_ring.empty()) {
       ImPlot::PlotLine("ram usage MiB", ring_data.ram_ring[2].data(), ring_data.ram_ring[2].size());
+
+      ipth.SetMarkersTheme();
+
+      ImPlot::PlotScatter("ram usage MiB", ring_data.ram_ring[2].data(), ring_data.ram_ring[2].size());
     }
     ImPlot::EndPlot();
   }
@@ -200,6 +248,10 @@ void ram_chart() {
 
     if (!ring_data.ram_ring.empty()) {
       ImPlot::PlotLine("ram usage %", ring_data.ram_ring[3].data(), ring_data.ram_ring[3].size());
+
+      ipth.SetMarkersTheme();
+
+      ImPlot::PlotScatter("ram usage %", ring_data.ram_ring[3].data(), ring_data.ram_ring[3].size());
     }
     ImPlot::EndPlot();
   }
