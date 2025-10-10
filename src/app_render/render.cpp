@@ -13,7 +13,6 @@
 #include <nvml.h>
 
 #include "render.h"
-#include "theme.h"
 #include "draw.h"
 #include "components_dashboard/sample.h"
 
@@ -108,7 +107,7 @@ int MainWindow::main_loop() {
     glfwPollEvents();
 
     double current_time = glfwGetTime();
-    if (current_time - last_time >= 0.5) {
+    if (current_time - last_time >= 1.0) {
 
       current_stats = refresh_samples();
       update_min_max(current_stats, mm);
