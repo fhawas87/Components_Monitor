@@ -8,27 +8,49 @@
 #include "cpu.h"
 #include "gpu.h"
 
+class ImGui_Theme {
+public:
 
-void implot_theme(const ImVec4 &accent) {
+  const ImVec4 LightGrey = ImVec4(0.96f, 0.96f, 0.96f, 1.0f);
+  const ImVec4 WindowBG = ImVec4(0.16f, 0.16f, 0.16f, 1.0f);
 
-  ImPlotStyle &ps = ImPlot::GetStyle();
+  inline void ApplyTheme() {
 
-  ps.LineWeight = 0.5f;
-  ps.Colors[ImPlotCol_PlotBg] = ImVec4(0.16f, 0.16f, 0.16f, 1.0f);
-  ps.Colors[ImPlotCol_AxisText] = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
-  ps.Colors[ImPlotCol_AxisGrid] = ImVec4(0.50f, 0.50f, 0.50f, 1.0f);
-  ps.Colors[ImPlotCol_FrameBg] = ImVec4(0.16f, 0.16f, 0.16f, 1.0f);
-  
-  static bool is_colormap_installed = false;
-  if (!is_colormap_installed) {
-    ImVec4 mono[2] = { accent };
+    ImGuiStyle &gui_style = ImGui::GetStyle();
 
-    ImPlot::AddColormap("MonoAccent", mono, 2);
-    ImPlot::PushColormap("MonoAccent");
-
-    is_colormap_installed = true;
+    gui_style.Colors[ImGuiCol_WindowBg] = WindowBG;
   }
-}
+};
+
+class ImPlot_Theme {
+public:
+  
+  const ImVec4 LightGrey = ImVec4(0.96f, 0.96f, 0.96f, 1.0f);
+  const ImVec4 ChartsBG = ImVec4(0.16f, 0.16f, 0.16f, 1.0f);
+
+  inline void ApplyTheme() {
+
+    ImPlotStyle &plot_style = ImPlot::GetStyle();
+    
+    plot_style.LineWeight = 1.0f;
+
+    plot_style.Colors[ImPlotCol_PlotBg] = ChartsBG;
+    plot_style.Colors[ImPlotCol_FrameBg] = ChartsBG;
+    plot_style.Colors[ImPlotCol_AxisText] = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+    plot_style.Colors[ImPlotCol_AxisGrid] = ImVec4(0.50f, 0.50f, 0.50f, 1.0f);
+
+    static bool is_colormap_installed = false;
+
+    if (!is_colormap_installed) {
+      ImVec4 mono[2] = { LightGrey };
+
+      ImPlot::AddColormap("MonoAccent", mono, 2);
+      ImPlot::PushColormap("MonoAccent");
+
+      is_colormap_installed = true;
+    }
+  }
+};
 
 void draw_system_dashboard(stats &current_stats, min_max &mm) {
   
